@@ -12,7 +12,7 @@ const login = async (email, password) => {
 
     if (error) {
         const err = new Error('Some required fields are missing');
-        err.code = 'BadRequest';
+        err.code = 'BAD_REQUEST';
         throw err;
     }
 
@@ -20,7 +20,7 @@ const login = async (email, password) => {
 
     if (!userLogin) {
         const err = new Error('Invalid fields');
-        err.code = 'BadRequest';
+        err.code = 'BAD_REQUEST';
         throw err;
     }
 
