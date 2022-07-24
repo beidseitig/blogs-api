@@ -1,16 +1,6 @@
 const joi = require('joi');
-const jwt = require('jsonwebtoken');
+const jwt = require('../helpers/token');
 const { User } = require('../database/models');
-
-require('dotenv').config();
-
-const generateToken = (user) => {
-  const token = jwt.sign({ data: user }, process.env.JWT_SECRET, {
-    expiresIn: '7d',
-    algorithm: 'HS256',
-  });
-  return token;
-};
 
 const schema = joi.object({
     email: joi.string().email().required(),
@@ -34,7 +24,7 @@ const login = async (email, password) => {
         throw err;
     }
 
-    const token = generateToken(email);
+    const token = jwt(email);
 
     return token;
 };
