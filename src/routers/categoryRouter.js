@@ -8,4 +8,6 @@ router.use(tokenValidation);
 
 router.post('/', categoryController.addCategory);
 
+router.get('/', categoryController.getAll);
+
 module.exports = router;
