@@ -10,4 +10,6 @@ router.use(tokenValidation);
 
 router.get('/', userController.getAll);
 
+router.get('/:id', userController.getById);
+
 module.exports = router;
