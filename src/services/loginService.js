@@ -24,7 +24,7 @@ const login = async (email, password) => {
         throw err;
     }
 
-    const token = jwt(email);
+    const token = jwt.generateToken(email);
 
     return token;
 };

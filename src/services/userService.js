@@ -28,9 +28,14 @@ const addUser = async (displayName, email, password, image) => {
 
     await User.create({ displayName, email, password, image });
 
-    const token = jwt(email);
+    const token = jwt.generateToken(email);
 
     return token;
 };
 
-module.exports = addUser;
+const getAll = async () => {
+    const result = await User.findAll({ attributes: ['id', 'displayName', 'email', 'image'] });
+    return result;
+};
+
+module.exports = { addUser, getAll };
